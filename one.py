@@ -1,4 +1,6 @@
 """
+--- Day 1: The Tyranny of the Rocket Equation ---
+
 The Elves quickly load you into a spacecraft and prepare to launch.
 
 At the first Go / No Go poll, every Elf is Go until the Fuel Counter-Upper. They haven't determined the amount of fuel
@@ -44,6 +46,7 @@ def get_fuel_for_modules(input_dir: str):
 
 
 """
+--- Part Two ---
 During the second Go / No Go poll, the Elf in charge of the Rocket Equation Double-Checker stops the launch sequence.
 Apparently, you forgot to include additional fuel for the fuel you just added.
 
