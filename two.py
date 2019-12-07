@@ -83,7 +83,7 @@ def run_program(data):
     while True:
         if data[current_ind] == 99:
             log.debug("OpCode 99, exiting program")
-            return data
+            break
 
         elif data[current_ind] == 1:
             input_1_ind = data[current_ind + 1]
@@ -125,7 +125,7 @@ def part_one(input_dir):
     data[1] = 12
     data[2] = 2
 
-    data = run_program(data)
+    run_program(data)
 
     return data[0]
 
@@ -168,9 +168,27 @@ example, if noun=12 and verb=2, the answer would be 1202.)
 """
 
 
+def part_two(input_dir):
+    data = load_data(input_dir)
+
+    # brute force approach
+    for input_one in range(100):
+        for input_two in range(100):
+            memory = data.copy()
+            memory[1] = input_one
+            memory[2] = input_two
+
+            run_program(memory)
+
+            if memory[0] == 19690720:
+                return input_one, input_two
+
+    raise ValueError("Couldn't find the right inputs")
+
+
 if __name__ == "__main__":
     logging.basicConfig(stream=sys.stdout, format='[%(levelname)s] %(message)s', level=logging.INFO)
     log = logging.getLogger(__name__)
 
     log.info(f"Part 1: {part_one('inputs/2.txt')}")
-    # log.info(f"Part 2: {}")
+    log.info(f"Part 2: {part_two('inputs/2.txt')}")
